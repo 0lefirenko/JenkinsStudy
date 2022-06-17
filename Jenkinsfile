@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                fastlane build
+                sh "fastlane build"
             }
         }
         stage('Test') { 
