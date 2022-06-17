@@ -15,12 +15,12 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                echo '${params.branch}'
+                fastlane build
             }
         }
         stage('Test') { 
             steps {
-            	xcrun xcodebuild -scheme JenkinsStudy test 
+            	echo '${params.branch}'
             }
         }
     }
