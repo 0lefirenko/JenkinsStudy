@@ -15,17 +15,20 @@
 
 default_platform(:ios)
 
-platform :ios do
+platform :ios do 
   desc "Description of what the lane does"
-  lane :build do
+  lane :build do |options|
+    scheme = options[:scheme]
+
     gym(
-        scheme: 'JenkinsStudy',
+        scheme: scheme,
 	export_method: "development",
 	skip_codesigning: true,
 	skip_package_ipa: true,
          clean: true)
   end
-  lane :tests do
+  lane :tests do |options|
+    scheme = options[:scheme]
     run_tests(scheme: 'JenkinsStudy')
   end
 end

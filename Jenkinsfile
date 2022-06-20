@@ -4,6 +4,7 @@ pipeline {
     agent any
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'branch', type: 'PT_BRANCH' 
+        choice(name: 'scheme', choices: ['JenkinsStudy', 'JenkinsStudyProd'], description: '')
     }
 
     stages {
@@ -15,12 +16,12 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                sh "fastlane build"
+                sh "fastlane build scheme:${params.scheme}"
             }
         }
         stage('Test') { 
             steps {
-            	sh "fastlane tests"
+            	sh "fastlane tests scheme:${params.scheme}"
             }
         }
     }
