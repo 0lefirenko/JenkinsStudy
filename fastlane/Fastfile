@@ -22,7 +22,10 @@ platform :ios do
         scheme: 'JenkinsStudy',
 	export_method: "development",
 	skip_codesigning: true,
-skip_package_ipa: true,
-             clean: true)
+	skip_package_ipa: true,
+         clean: true)
+  end
+  lane :tests do
+    run_tests(scheme: 'JenkinsStudy')
   end
 end

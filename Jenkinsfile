@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-            	echo '${params.branch}'
+            	sh "fastlane tests"
             }
         }
     }
