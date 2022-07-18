@@ -25,9 +25,9 @@ pipeline {
             }
         }
 
-	stage('More Test for master') { 
+	stage('More Test for main') { 
 	    when {
-        		branch 'master'
+        		branch 'main'
    	    }
     	    steps {
 		echo 'tests success'
