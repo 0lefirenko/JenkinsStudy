@@ -24,5 +24,31 @@ pipeline {
             	sh "fastlane tests scheme:${params.scheme}"
             }
         }
+
+	stage('More Test for master') { 
+	    when {
+        		branch 'master'
+   	    }
+    	    steps {
+		echo 'tests success'
+            }
+        }
+
+	stage('Feature tests') {
+	    when {
+	        branch 'feature/*'
+	    }
+	    steps {
+	        echo 'feature tests success'
+    	    }
+	}	
+
+	stage('Final Test for all') { 
+            steps {
+		retry(3) {
+		    echo 'success'
+                	}
+            }
+        }
     }
 }
